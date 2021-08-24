@@ -1,6 +1,6 @@
 <template>
   <router-view/>
-  <MiniPlayer/>
+  <Player :isShow="isShow"/>
   <van-tabbar route>
     <van-tabbar-item replace to="/recom" icon="home-o">首页</van-tabbar-item>
     <van-tabbar-item replace to="/search" icon="search">搜索</van-tabbar-item>
@@ -10,11 +10,16 @@
 
 <script>
 // @ is an alias to /src
-import MiniPlayer from '../components/Player/MiniPlayer.vue'
+import Player from './Player/index.vue'
 export default {
   name: 'Home',
+  data () {
+    return {
+      isShow: false
+    }
+  },
   components: {
-    MiniPlayer
+    Player
   },
   created () {
   }

@@ -1,4 +1,5 @@
 <template>
+<van-sticky z-index="1">
   <div class="header">
     <div class="header-left" @click="getMenu">
       <svg class="icon" aria-hidden="true">
@@ -15,6 +16,7 @@
     </router-link>
     <div class="header-right"></div>
   </div>
+  </van-sticky>
 </template>
 
 <script>
@@ -41,6 +43,8 @@ export default {
   align-items: center;
   padding-top: 5px;
   height: 42px;
+  background-color: rgba(255, 255, 255, .5);
+  backdrop-filter: blur(20px);
   .header-left,.header-right{
     width: 50px;
     height: 40px;

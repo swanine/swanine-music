@@ -51,11 +51,11 @@ export default {
     })
   },
   // 推荐歌单
-  getPersonalized  (params) {
+  getPersonalized  () {
     return request({
       url: '/personalized',
       method: 'get',
-      data: params
+      data: { limit: 9 }
     })
   },
   // 获取歌单详情
@@ -70,6 +70,30 @@ export default {
   getPlay () {
     return request({
       url: '/playlist/highquality/tags',
+      method: 'get',
+      data: {}
+    })
+  },
+  // 最新专辑
+  getnewest () {
+    return request({
+      url: '/album/newest',
+      method: 'get',
+      data: {}
+    })
+  },
+  // 获取专辑内容
+  getAlbum (id) {
+    return request({
+      url: '/album',
+      method: 'get',
+      data: { id }
+    })
+  },
+  // 推荐新音乐
+  getNewSong () {
+    return request({
+      url: '/personalized/newsong',
       method: 'get',
       data: {}
     })

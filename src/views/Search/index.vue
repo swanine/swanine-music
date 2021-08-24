@@ -25,7 +25,6 @@ export default {
 
 <style scoped lang="scss">
 .search-wrapper{
-  overflow: auto;
-  height: calc(100vh - 50px);
+  padding-bottom: 110px;
 }
 </style>

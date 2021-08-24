@@ -74,7 +74,7 @@ export default {
   width: 100%;
   font-size: 16px;
   color: #1f1f1ff3;
-  background-color: #ffffffb9;
+  background-color: #ffffff83;
   backdrop-filter: blur(20px);
   .song-info{
     width: 140px;
@@ -84,8 +84,8 @@ export default {
   .needle{
     position: relative;
     bottom: 10px;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background-color: aquamarine;
   }

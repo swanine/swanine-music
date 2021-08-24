@@ -11,7 +11,14 @@ const routes = [
       {
         path: '/recom',
         name: 'Recom',
-        component: () => import('../views/Recommd')
+        component: () => import('../views/Recommd'),
+        children: [
+          {
+            path: 'detail/:id/:type',
+            name: 'Detail',
+            component: () => import('../views/Detail/index.vue')
+          }
+        ]
       },
       {
         path: '/search',
