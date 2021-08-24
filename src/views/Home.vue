@@ -1,6 +1,6 @@
 <template>
   <router-view/>
-  <Player :isShow="isShow"/>
+  <Player/>
   <van-tabbar route>
     <van-tabbar-item replace to="/recom" icon="home-o">首页</van-tabbar-item>
     <van-tabbar-item replace to="/search" icon="search">搜索</van-tabbar-item>

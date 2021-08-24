@@ -22,7 +22,7 @@ export default {
   name: 'Playheader',
   methods: {
     hidden () {
-      this.$emit('hiddenPlayer')
+      this.$router.go(-1)
     }
   },
   props: {
@@ -38,19 +38,19 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 30px;
-  padding: 40px;
+  font-size: 18px;
+  padding: 10px;
   color: #fff;
   .play-header-left{
     .icon {
-       width: 56px; height: 56px;
+       width: 30px; height: 30px;
        vertical-align: -0.15em;
        fill: currentColor;
        overflow: hidden;
     }
   }
   .play-header-title{
-    padding: 0 20px;
+    padding: 0 10px;
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -60,7 +60,7 @@ export default {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 24px;
+    font-size: 14px;
     letter-spacing:1px
   }
     .song{
@@ -71,7 +71,7 @@ export default {
   }
   .play-header-right{
     .icon {
-       width: 56px; height: 56px;
+       width: 30px; height: 30px;
        vertical-align: -0.15em;
        fill: currentColor;
        overflow: hidden;
