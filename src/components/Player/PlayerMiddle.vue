@@ -48,15 +48,15 @@ export default {
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 400px;
     img{
-      margin: 80px 0;
+      margin: 50px 0;
       border-radius: 50%;
       height: 250px;
       box-shadow: 0 0 1px 14px rgba(136, 136, 136, 0.205);
     }
   }
   p{
+    height: 40px;
     text-align: center;
     font-size: 16px;
     color: #666;

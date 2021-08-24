@@ -1,33 +1,16 @@
 <template>
 <div class="mini-palyer" @click="showPlayer">
-  <div class="needle">
-    <img src="" alt="">
-  </div>
-  <div class="song-info">
-    <span class="song">演员 — </span>
-    <span class="singer">薛之谦</span>
-  </div>
-  <div class="mini-player-control">
-    <div class="last-song">
-      <svg class="icon" aria-hidden="true">
-        <use xlink:href="#icon-shangyishoushangyige"></use>
-      </svg>
-    </div>
-    <div class="play-pause" @click.stop="playPause">
-      <div class="play" v-if="!isPlayed">
-        <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-bofang_huaban1"></use>
-        </svg>
-      </div>
-      <div class="pause" v-else>
-        <span></span>
-        <span></span>
+  <div class="play-wrapper">
+    <div class="player-left">
+      <img src="https://img0.baidu.com/it/u=2068735270,2570475849&fm=26&fmt=auto&gp=0.jpg" alt="">
+      <div class="play-title">
+        <h3>演员</h3>
+        <p>薛之谦</p>
       </div>
     </div>
-    <div class="next-song">
-      <svg class="icon" aria-hidden="true">
-        <use xlink:href="#icon-xiayigexiayishou"></use>
-      </svg>
+    <div class="player-right">
+      <div class="play"></div>
+      <div class="list"></div>
     </div>
   </div>
 </div>
@@ -42,12 +25,6 @@ export default {
     }
   },
   methods: {
-    playPause () {
-      this.isPlayed = !this.isPlayed
-    },
-    showPlayer () {
-      this.$emit('showPlayer')
-    }
   }
 }
 </script>
@@ -64,64 +41,45 @@ export default {
 //   z-index: -666;
 // }
 .mini-palyer{
-  display: flex;
-  justify-content: space-around;
   position: fixed;
-  box-shadow: 0 0 30px 4px #e0e0e071;
-  bottom: 50px;
+  z-index: 4;
   left: 0;
-  height: 60px;
+  bottom: 0;
   width: 100%;
-  font-size: 16px;
-  color: #1f1f1ff3;
-  background-color: #ffffff83;
-  backdrop-filter: blur(20px);
-  .song-info{
-    width: 140px;
-    line-height: 40px;
-    padding: 10px 0;
-  }
-  .needle{
-    position: relative;
-    bottom: 10px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: aquamarine;
-  }
-  .mini-player-control{
+  height: 60px;
+  padding: 0 10px;
+  background-color: rgb(255, 255, 255);
+  .play-wrapper{
     display: flex;
-    width: 110px;
+    justify-content: space-between;
     align-items: center;
-    gap: 10px;
-    .play-pause{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    .play{
-      .icon{
-        margin-left: 8px;
-        margin-top: 0;
-        width: 28px; height: 28px;
-      }
-    }
-    .pause{
+    .player-left{
       display: flex;
-      justify-content: center;
-      align-items: center;
-      span{
-        display: block;
-        margin: 4px;
-        width: 2px;
-        height: 20px;
-        border-radius: 20px;
-        background-color: #acacacd3;
+      img{
+        margin-top: 4px;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+      }
+      .play-title{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-left: 12px;
+        h3{
+          font-size: 16px;
+          color: #444;
+        }
+        p{
+          font-size: 12px;
+          color: #777;
+        }
       }
     }
-  }
+    .player-right{
+
+    }
   }
 }
 .icon {

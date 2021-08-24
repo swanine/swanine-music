@@ -1,6 +1,6 @@
 <template>
 <ul class="detail-bottom">
-  <li v-for="(item,index) in playlist" :key="item.id">
+  <li v-for="(item,index) in playlist" :key="item.id" @click="selectMusic">
     <span>{{index+1}}</span>
     <div>
       <h3>{{item.name}}</h3>
@@ -17,6 +17,11 @@ export default {
     playlist: {
       type: Array,
       default: () => []
+    }
+  },
+  methods: {
+    selectMusic () {
+      this.$store.dispatch('setFullScreen', true)
     }
   }
 }

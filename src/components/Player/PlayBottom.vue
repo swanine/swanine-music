@@ -64,7 +64,7 @@ export default {
 <style scoped lang="scss">
 .player-bottom{
   font-size: 10px;
-  margin-top: 30px;
+  margin-top: 20px;
   .bottom-progress{
     display: flex;
     justify-content: center;
