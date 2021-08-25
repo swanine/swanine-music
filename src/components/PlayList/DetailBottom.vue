@@ -1,6 +1,6 @@
 <template>
 <ul class="detail-bottom">
-  <li v-for="(item,index) in playlist" :key="item.id" @click="selectMusic">
+  <li v-for="(item,index) in playlist" :key="item.id" @click="selectMusic(item.id)">
     <span>{{index+1}}</span>
     <div>
       <h3>{{item.name}}</h3>
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'DetailBottom',
   props: {
@@ -20,8 +21,16 @@ export default {
     }
   },
   methods: {
-    selectMusic () {
-      this.$store.dispatch('setFullScreen', true)
+    ...mapActions([
+      'setFullScreen',
+      'setMiniPlayer',
+      'setSongsDetail'
+    ]),
+    selectMusic (id) {
+      // this.$store.dispatch('setFullScreen', true)
+      this.setFullScreen(true)
+      this.setMiniPlayer(false)
+      this.setSongsDetail(id)
     }
   }
 }

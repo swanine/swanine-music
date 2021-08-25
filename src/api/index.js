@@ -4,11 +4,11 @@
 import request from '@/utils/request'
 export default {
   // 获取歌曲url
-  getSongUrl (params) {
+  getSongUrl (id) {
     return request({
       url: '/song/url',
       method: 'get',
-      data: params
+      data: { id }
     })
   },
   // 搜索歌曲
@@ -96,6 +96,14 @@ export default {
       url: '/personalized/newsong',
       method: 'get',
       data: {}
+    })
+  },
+  // 音乐详情
+  getSongDetail (ids) {
+    return request({
+      url: '/song/detail',
+      method: 'get',
+      data: { ids }
     })
   }
 }

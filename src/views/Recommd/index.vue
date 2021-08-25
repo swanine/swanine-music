@@ -59,7 +59,7 @@ export default {
 
 <style scoped lang="scss">
 .recommend{
-  padding-bottom: 110px;
+  padding-bottom: 60px;
 }
 .fade-enter-active {
   transition: all 0.3s ease-in-out;

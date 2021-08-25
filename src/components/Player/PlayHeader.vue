@@ -6,8 +6,8 @@
     </svg>
   </div>
   <div class="play-header-title">
-    <h3 class="song">歌名</h3>
-    <div class="singer">歌手</div>
+    <h3 class="song">{{currentSong.name}}</h3>
+    <div class="singer">{{currentSong.singer}}</div>
   </div>
   <div class="play-header-right">
     <svg class="icon" aria-hidden="true">
@@ -18,12 +18,28 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'Playheader',
   methods: {
+    ...mapActions([
+      'setFullScreen',
+      'setMiniPlayer'
+    ]),
     hidden () {
-      this.$router.go(-1)
+      this.setFullScreen(false)
+      this.setMiniPlayer(true)
     }
+  },
+  computed: {
+    ...mapGetters([
+      'currentSong',
+      'songs'
+    ])
+  },
+  mounted () {
+    console.log(this.currentSong)
+    console.log(this.songs)
   },
   props: {
     isShow: {
@@ -40,6 +56,7 @@ export default {
   align-items: center;
   font-size: 18px;
   padding: 10px;
+  padding-top: 16px;
   color: #fff;
   .play-header-left{
     .icon {
@@ -55,12 +72,13 @@ export default {
     overflow: hidden;
     text-overflow: ellipsis;
      white-space: nowrap;
-    letter-spacing: 3px;
+    letter-spacing: 1px;
+    font-size: 16px;
     .singer{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 14px;
+    font-size: 12px;
     letter-spacing:1px
   }
     .song{
@@ -77,5 +95,8 @@ export default {
        overflow: hidden;
     }
   }
+}
+.icon{
+  margin-top: 2px;
 }
 </style>

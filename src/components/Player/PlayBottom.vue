@@ -21,7 +21,7 @@
       </svg>
     </div>
     <div class="play-pause" @click="playPause">
-      <div class="play" v-if="!isPlayed">
+      <div class="play" v-if="!this.isPlaying">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-bofang_huaban1"></use>
         </svg>
@@ -46,17 +46,22 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'PlayerBottom',
-  data () {
-    return {
-      isPlayed: false
+  methods: {
+    ...mapActions([
+      'setIsPlaying'
+    ]),
+    playPause () {
+      this.setIsPlaying(!this.isPlaying)
+      console.log(this.isPlaying)
     }
   },
-  methods: {
-    playPause () {
-      this.isPlayed = !this.isPlayed
-    }
+  computed: {
+    ...mapGetters([
+      'isPlaying'
+    ])
   }
 }
 </script>
@@ -101,7 +106,7 @@ export default {
   align-items: center;
   padding: 30px 36px;
   font-size: 20px;
-  color: rgb(105, 105, 105);
+  color: rgba(255, 255, 255, .7);
   .heart{
     .icon{
       width: 26px; height: 26px;
@@ -114,7 +119,7 @@ export default {
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    border: 1px solid rgb(105, 105, 105);
+    border: 1px solid rgba(255, 255, 255, .7);
     .play{
       .icon{
         margin-left: 8px;
@@ -132,7 +137,7 @@ export default {
         width: 2px;
         height: 28px;
         border-radius: 10px;
-        background-color: rgb(105, 105, 105);
+        background-color: rgba(255, 255, 255, .7);
       }
     }
   }

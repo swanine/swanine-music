@@ -1,8 +1,8 @@
 <template>
-<van-swipe class="my-swipe" indicator-color="white" :loop="false" @change="onChange">
+<van-swipe class="my-swipe" @change="onChange">
   <van-swipe-item>
     <div class="cd-wrapper">
-      <img src="https://img0.baidu.com/it/u=2068735270,2570475849&fm=26&fmt=auto&gp=0.jpg" alt="">
+      <img :style="active" :src="currentSong.picUrl" alt="">
     </div>
     <p>少拿点收到就好发</p>
   </van-swipe-item>
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'PlayerMiddle',
   data () {
@@ -28,6 +29,24 @@ export default {
       bgcolorW: {
         backgroundColor: '',
         width: 6 + 'px'
+      },
+      active: {
+        animationPlayState: 'running'
+      }
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'isPlaying',
+      'currentSong'
+    ])
+  },
+  watch: {
+    isPlaying (value) {
+      if (value) {
+        this.active.animationPlayState = 'running'
+      } else {
+        this.active.animationPlayState = 'paused'
       }
     }
   },
@@ -48,11 +67,13 @@ export default {
     display: flex;
     justify-content: center;
     width: 100%;
+    margin: 30px 0;
     img{
-      margin: 50px 0;
       border-radius: 50%;
-      height: 250px;
-      box-shadow: 0 0 1px 14px rgba(136, 136, 136, 0.205);
+      height: 260px;
+      box-shadow: 0 0 1px 14px rgba(10, 10, 10, .1);
+      animation: sport 4s linear infinite;
+      animation-play-state: paused;
     }
   }
   p{
@@ -74,6 +95,14 @@ export default {
       height: 5px;
       background-color: rgb(211, 211, 211);
     }
+  }
+}
+@keyframes sport {
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
   }
 }
 </style>
