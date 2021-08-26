@@ -11,8 +11,24 @@
       </div>
     </div>
     <div class="player-right">
-      <div class="play"></div>
-      <div class="list"></div>
+      <div class="play">
+        <div class="play-pause" @click="playPause">
+          <div class="play" v-if="!this.isPlaying">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-bofang_huaban1"></use>
+            </svg>
+          </div>
+          <div class="pause" v-else>
+            <span></span>
+            <span></span>
+          </div>
+      </div>
+      </div>
+      <div class="list" @click="showList">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-bofangliebiaoguanli"></use>
+        </svg>
+      </div>
     </div>
   </div>
 </div>
@@ -33,18 +49,27 @@ export default {
   methods: {
     ...mapActions([
       'setFullScreen',
-      'setMiniPlayer'
+      'setMiniPlayer',
+      'setIsPlaying',
+      'setIsShowSongList'
     ]),
     showPlayer () {
       this.setFullScreen(true)
       this.setMiniPlayer(false)
+    },
+    playPause () {
+      this.setIsPlaying(!this.isPlaying)
+    },
+    showList () {
+      this.setIsShowSongList(!this.isShowSongList)
     }
   },
   computed: {
     ...mapGetters([
       'isShowMiniPlayer',
       'isPlaying',
-      'currentSong'
+      'currentSong',
+      'isShowSongList'
     ])
   },
   watch: {
@@ -104,7 +129,7 @@ export default {
       }
       .play-title{
         display: flex;
-        width: 288px;
+        width: 200px;
         flex-direction: column;
         justify-content: center;
         margin-left: 12px;
@@ -122,17 +147,46 @@ export default {
       }
     }
     .player-right{
-
+      display: flex;
+      justify-content: space-between;
+      width: 82px;
+        .play-pause{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        .play{
+          .icon{
+            margin-left: 8px;
+            margin-top: 0;
+            width: 32px; height: 32px;
+          }
+        }
+        .pause{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          span{
+            display: block;
+            margin: 4px;
+            width: 2px;
+            height: 22px;
+            border-radius: 10px;
+            background-color: rgba(167, 167, 167, 0.7);
+          }
+        }
+      }
     }
   }
 }
 .icon {
-  width: 23px; height: 23px;
+  width: 24px; height: 24px;
   vertical-align: -0.15em;
   fill: currentColor;
   color: #acacacd3;
   overflow: hidden;
-  margin: 0;
+  margin-top: 2px;
 }
 
 @keyframes sport {

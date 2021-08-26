@@ -1,6 +1,6 @@
 <template>
 <ul class="detail-bottom">
-  <li class="bottom-top">
+  <li class="bottom-top" @click="selectAllMusic">
     <div class="bottom-icon">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-bofang_huaban1"></use>
@@ -40,6 +40,16 @@ export default {
       this.setFullScreen(true)
       this.setMiniPlayer(false)
       this.setSongsDetail(id)
+    },
+    selectAllMusic () {
+      this.setFullScreen(true)
+      this.setMiniPlayer(false)
+      // eslint-disable-next-line prefer-const
+      let ids = this.playlist.map(function (item) {
+        return item.id
+      })
+
+      this.setSongsDetail(ids.join(','))
     }
   }
 }
@@ -62,7 +72,7 @@ export default {
     align-items: center;
     padding: 6px;
     height: 50px;
-    width: 100%;
+    width: 30%;
     box-sizing: border-box;
     font-size: 13px;
     color: rgb(94, 94, 94);

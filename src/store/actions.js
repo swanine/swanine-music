@@ -3,7 +3,7 @@
  *
  */
 import api from '../api/index'
-import { SET_FULL_SCREEN, SET_MINI_PLAYER, SET_IS_PLAYING, SET_SONGS_DETAIL } from './mutations-type'
+import { SET_FULL_SCREEN, SET_MINI_PLAYER, SET_IS_PLAYING, SET_SONGS_DETAIL, SET_IS_SHOW_SONGLIST } from './mutations-type'
 
 export default {
   setFullScreen ({ commit }, flag) {
@@ -14,6 +14,9 @@ export default {
   },
   setIsPlaying ({ commit }, flag) {
     commit(SET_IS_PLAYING, flag)
+  },
+  setIsShowSongList ({ commit }, flag) {
+    commit(SET_IS_SHOW_SONGLIST, flag)
   },
   async setSongsDetail ({ commit }, ids) {
     // const result = await api.getSongDetail(ids)
@@ -44,6 +47,7 @@ export default {
     // eslint-disable-next-line prefer-const
     let list = []
     result.songs.forEach(function (value) {
+      console.log(result.songs)
       // eslint-disable-next-line prefer-const
       let music = {
         id: value.id,
@@ -71,7 +75,6 @@ export default {
       music.picUrl = value['al'].picUrl
       list.push(music)
     })
-    console.log(list)
     commit(SET_SONGS_DETAIL, list)
   }
 }

@@ -37,10 +37,6 @@ export default {
       'songs'
     ])
   },
-  mounted () {
-    console.log(this.currentSong)
-    console.log(this.songs)
-  },
   props: {
     isShow: {
       type: Boolean

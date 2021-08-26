@@ -5,6 +5,7 @@ export default {
   isFullScreen: false,
   isShowMiniPlayer: true,
   isPlaying: true,
+  isShowSongList: false,
   songs: [],
   currentSong: {},
   currentIndex: 0
