@@ -40,8 +40,6 @@ export default {
 
 <style scoped lang="scss">
 .header {
-  position: fixed;
-  z-index: 2;
   width: 100%;
   display: flex;
   align-items: center;

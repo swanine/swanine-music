@@ -2,10 +2,12 @@
 <div class="mini-palyer" v-show="this.isShowMiniPlayer">
   <div class="play-wrapper">
     <div class="player-left" @click="showPlayer">
-      <img :style="active" src="https://img0.baidu.com/it/u=2068735270,2570475849&fm=26&fmt=auto&gp=0.jpg" alt="">
+      <div class="img-mini" :style="active">
+        <img :src="currentSong.picUrl">
+      </div>
       <div class="play-title">
-        <h3>演员</h3>
-        <p>薛之谦</p>
+        <h3>{{currentSong.name}}</h3>
+        <p>{{currentSong.singer}}</p>
       </div>
     </div>
     <div class="player-right">
@@ -41,7 +43,8 @@ export default {
   computed: {
     ...mapGetters([
       'isShowMiniPlayer',
-      'isPlaying'
+      'isPlaying',
+      'currentSong'
     ])
   },
   watch: {
@@ -74,7 +77,7 @@ export default {
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 66px;
+  height: 60px;
   .play-wrapper{
     box-sizing: border-box;
     padding: 0 12px;
@@ -82,31 +85,39 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    backdrop-filter: blur(20px);
-    background-color: rgb(255, 255, 255, .4);
+    background-color: rgb(241, 241, 241);
     .player-left{
       display: flex;
-      img{
+      .img-mini{
         margin-top: 2px;
-        width: 52px;
-        height: 52px;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
-        animation: sport 4s linear infinite;
+        overflow: hidden;
         animation-play-state: paused;
+        animation: sport 5s linear infinite;
+        img{
+          width: 100%;
+          height: 100%;
+          background-image: url('https://img0.baidu.com/it/u=2068735270,2570475849&fm=26&fmt=auto&gp=0.jpg');
+        }
       }
       .play-title{
         display: flex;
+        width: 288px;
         flex-direction: column;
-        align-items: center;
         justify-content: center;
         margin-left: 12px;
         h3{
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
           font-size: 16px;
           color: #444;
         }
         p{
           font-size: 12px;
-          color: #777;
+          color: rgb(150, 150, 150);
         }
       }
     }

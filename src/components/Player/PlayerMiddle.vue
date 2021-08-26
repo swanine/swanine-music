@@ -1,10 +1,10 @@
 <template>
 <van-swipe class="my-swipe" @change="onChange">
-  <van-swipe-item>
-    <div class="cd-wrapper">
-      <img :style="active" :src="currentSong.picUrl" alt="">
+  <van-swipe-item class="cd">
+    <div class="cd-wrapper" :style="active">
+      <img :src="currentSong.picUrl" alt="">
     </div>
-    <p>少拿点收到就好发</p>
+    <p>歌词</p>
   </van-swipe-item>
   <van-swipe-item>2</van-swipe-item>
   <template #indicator>
@@ -63,24 +63,28 @@ export default {
 
 <style scoped lang="scss">
 .my-swipe{
-  .cd-wrapper{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin: 30px 0;
-    img{
-      border-radius: 50%;
+  .cd{
+    .cd-wrapper{
       height: 260px;
-      box-shadow: 0 0 1px 14px rgba(10, 10, 10, .1);
-      animation: sport 4s linear infinite;
+      width: 260px;
+      background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 30px auto;
+      box-shadow: 0 0 1px 16px rgba(10, 10, 10, .1);
+      animation: sport 5s linear infinite;
       animation-play-state: paused;
+      img{
+        height: 100%;
+        width: 100%;
+      }
     }
-  }
-  p{
-    height: 40px;
-    text-align: center;
-    font-size: 16px;
-    color: #666;
+    p{
+      height: 40px;
+      text-align: center;
+      font-size: 16px;
+      color: #666;
+    }
   }
   .custom-indicator{
     display: flex;

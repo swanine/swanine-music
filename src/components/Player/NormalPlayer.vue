@@ -5,7 +5,6 @@
   :css="false"
 >
 <div class="normal-player" v-show="this.isFullScreen">
-  <img :src="currentSong.picUrl">
   <div class="player-wrapper">
     <Playerheader>
       <template v-slot:left>
@@ -17,6 +16,7 @@
     <PlayerMiddle/>
     <PlayBottom/>
   </div>
+  <img :src="currentSong.picUrl">
 </div>
 </transition>
 </template>
@@ -67,22 +67,23 @@ export default {
   z-index: 2;
   height: 100vh;
   width: 100vw;
-  background-color: rgba(127, 255, 212, 0);
-  backdrop-filter: blur(40px);
+  background-image: linear-gradient(-30deg, #9795f0 0%, #fbc8d4 100%);
   &>div{
     height: 100%;
     backdrop-filter: blur(24px);
   }
-  img{
-      height: 100%;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
   .player-wrapper{
     width: 100%;
     height: 100%;
+  }
+  img{
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(20px);
+    z-index: -1;
   }
 }
 </style>

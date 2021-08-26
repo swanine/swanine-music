@@ -94,6 +94,7 @@ export default {
   padding: 10px 16px;
   padding-bottom: 6px;
   display: flex;
+  background-color: rgb(250, 250, 250);
   gap: 20px;
   width: 100vw;
   border-bottom: 1px solid #f0f0f0;
