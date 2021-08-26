@@ -2,14 +2,19 @@
 <div class="detail">
   <PlayHeader :title="'最新歌单'"/>
   <DetailContent :playlist="playList"/>
-  <DetailBottom :playlist="playList.tracks"/>
+  <div class="bottom">
+  <ScrollView>
+    <DetailBottom :playlist="playList.tracks"/>
+  </ScrollView>
+  </div>
 </div>
 </template>
 
 <script>
-import PlayHeader from '../../components/PlayHeader.vue'
-import DetailContent from '../../components/PlayList/DetailContent.vue'
-import DetailBottom from '../../components/PlayList/DetailBottom.vue'
+import PlayHeader from '@/components/PlayHeader.vue'
+import DetailContent from '@/components/PlayList/DetailContent.vue'
+import DetailBottom from '@/components/PlayList/DetailBottom.vue'
+import ScrollView from '@/components/ScrollView.vue'
 export default {
   name: 'Detail',
   data () {
@@ -20,7 +25,8 @@ export default {
   components: {
     PlayHeader,
     DetailContent,
-    DetailBottom
+    DetailBottom,
+    ScrollView
   },
   created () {
     console.log(this.$route.params.type)
@@ -45,11 +51,13 @@ export default {
 <style scoped lang="scss">
 .detail{
   position: fixed;
-  overflow: scroll;
-  z-index: 2;
   top: 0;
+  bottom: 0;
   left: 0;
-  width: 100%;
-  height: 100vh;
+  right: 0;
+  background-color: rgb(240, 240, 240);
+  .bottom{
+    height: 360px;
+  }
 }
 </style>

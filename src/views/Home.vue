@@ -1,10 +1,12 @@
 <template>
+  <Header/>
   <router-view/>
   <Player/>
 </template>
 
 <script>
 // @ is an alias to /src
+import Header from '@/components/Header.vue'
 import Player from './Player/index.vue'
 export default {
   name: 'Home',
@@ -14,7 +16,8 @@ export default {
     }
   },
   components: {
-    Player
+    Player,
+    Header
   },
   created () {
   }

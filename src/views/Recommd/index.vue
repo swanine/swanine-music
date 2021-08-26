@@ -1,11 +1,14 @@
 <template>
 <div class="recommend">
-  <Header/>
-  <Banner/>
-  <Navbar/>
-  <Personalized :personalized="personalized" :title="'最新歌单'" @select="selectItem" :type="'personalized'"/>
-  <Personalized :personalized="albums" :title="'最新专辑'" @select="selectItem" :type="'albums'"/>
-  <RecommendSong :songs="songs"/>
+  <ScrollView>
+    <div>
+      <Banner/>
+      <Navbar/>
+      <Personalized :personalized="personalized" :title="'最新歌单'" @select="selectItem" :type="'personalized'"/>
+      <Personalized :personalized="albums" :title="'最新专辑'" @select="selectItem" :type="'albums'"/>
+      <RecommendSong :songs="songs"/>
+    </div>
+  </ScrollView>
   <router-view v-slot="{ Component }">
     <transition name="fade" mode="out-in">
         <component :is="Component"/>
@@ -15,7 +18,7 @@
 </template>
 
 <script>
-import Header from '@/components/Header.vue'
+import ScrollView from '@/components/ScrollView.vue'
 import Banner from '@/components/Banner.vue'
 import Navbar from '@/components/Navbar.vue'
 import Personalized from '@/components/Recomm/Recommend.vue'
@@ -37,7 +40,7 @@ export default {
     }
   },
   components: {
-    Header,
+    ScrollView,
     Banner,
     Navbar,
     Personalized,
@@ -59,7 +62,12 @@ export default {
 
 <style scoped lang="scss">
 .recommend{
-  padding-bottom: 60px;
+  position: fixed;
+  top: 47px;
+  left: 0;
+  right: 0;
+  bottom: 60px;
+  overflow: hidden;
 }
 .fade-enter-active {
   transition: all 0.3s ease-in-out;
