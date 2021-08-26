@@ -47,6 +47,7 @@ export default {
   box-sizing: border-box;
   padding: 6px 16px;
   color: #555;
+  background-color: rgb(250, 250, 250);
   .personalized-top{
     width: 100%;
     height: 34px;
@@ -63,6 +64,7 @@ export default {
     justify-content: space-between;
     box-sizing: border-box;
     overflow-x: auto;
+    min-height: 460px;
     .item{
       width: 104px;
       margin-top: 10px;

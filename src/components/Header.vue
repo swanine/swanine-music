@@ -43,7 +43,7 @@ export default {
   align-items: center;
   padding-top: 5px;
   height: 42px;
-  background-color: rgba(255, 255, 255, .5);
+  background-color: rgb(250, 250, 250);
   backdrop-filter: blur(20px);
   .header-left,.header-right{
     width: 50px;
@@ -70,7 +70,7 @@ export default {
     border-radius: 50px;
     text-align: center;
     user-select: none;
-    background-color: #fff;
+    background-color: rgb(233, 233, 233);
     box-shadow: 0 0 8px 3px rgba(0, 0, 0, 0.045);
     .header-text{
       font-size: 14px;

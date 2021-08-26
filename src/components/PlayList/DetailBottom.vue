@@ -1,5 +1,14 @@
 <template>
 <ul class="detail-bottom">
+  <li class="bottom-top">
+    <div class="bottom-icon">
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-bofang_huaban1"></use>
+      </svg>
+    </div>
+    <div class="bottom-title">播放全部</div>
+  </li>
+
   <li v-for="(item,index) in playlist" :key="item.id" @click="selectMusic(item.id)">
     <span>{{index+1}}</span>
     <div>
@@ -39,13 +48,45 @@ export default {
 <style scoped lang="scss">
 .detail-bottom{
   width: 100%;
-  min-height: 580px;
-  background-color: rgba(255, 255, 255,.94);
+  min-height: 380px;
+  background-color: rgb(255, 255, 255);
   color: #333;
   position: absolute;
-  top: 280px;
+  top: 230px;
   backdrop-filter: blur(10px);
-  z-index: -3;
+  border-radius: 26px 26px 0 0;
+  overflow: hidden;
+  z-index: 1;
+  .bottom-top{
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    height: 50px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 13px;
+    color: rgb(94, 94, 94);
+    background-color: rgb(255, 255, 255);
+    backdrop-filter: blur(10px);
+    .bottom-icon{
+      width: 21px;
+      height: 21px;
+      border-radius: 50%;
+      margin-left: 8px;
+      border: 1px solid rgb(94, 94, 94);
+      .icon {
+        width: 16px; height: 17px;
+        margin-top: 2px;
+        margin-left: 4px;
+        fill: currentColor;
+        overflow: hidden;
+      }
+    }
+    .bottom-title{
+      margin-left: 6px;
+    }
+  }
+
   li{
     display: flex;
     align-items: center;

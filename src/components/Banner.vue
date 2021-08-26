@@ -29,6 +29,7 @@ export default {
 
 <style lang="scss">
 .swiper{
+  background-color: rgb(250, 250, 250);
   .van-swipe__track{
     height: 100%;
   }
