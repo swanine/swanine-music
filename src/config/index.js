@@ -6,20 +6,20 @@ const env = process.env || 'prod'
 const EnvConfig = {
   dev: {
     baseApi: 'http://swanine.xyz:3000',
-    mockApi: 'http://localhost:3000/'
+    mockApi: ''
   },
   test: {
     baseApi: '/',
     mockApi: ''
   },
   prod: {
-    baseApi: '/',
+    baseApi: '/http://swanine.xyz:3000',
     mockApi: ''
   }
 }
 export default {
   env,
-  mock: true,
+  mock: false,
   namespace: 'swanine-music',
   ...EnvConfig[env]
 }

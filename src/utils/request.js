@@ -2,22 +2,21 @@
  * axios二次封装
  */
 import axios from 'axios'
-import config from '@/config'
 const NETWORK_ERROR = '网络异常'
 
 // 创建axios实例对象，添加全局配置
 const service = axios.create({
-  baseURL: config.baseApi,
-  timeout: 8000
+  baseURL: 'http://swanine.xyz:3000',
+  timeout: 10000
 })
 
 // 请求拦截
-service.interceptors.request.use((req) => {
-  // To-DO
-  const headers = req.headers
-  if (!headers.Authorization) headers.Authorization = 'Bear Jack'
-  return req
-})
+// service.interceptors.request.use((req) => {
+//   // To-DO
+//   const headers = req.headers
+//   if (!headers.Authorization) headers.Authorization = 'swan-music'
+//   return req
+// })
 
 // 响应拦截
 service.interceptors.response.use((res) => {
@@ -42,11 +41,11 @@ function request (options) {
     options.params = options.data
   }
 
-  if (config.env === 'prod') {
-    service.defaults.baseURL = config.baseURL
-  } else {
-    service.defaults.baseURL = config.mock ? config.mockApi : config.baseApi
-  }
+  // if (config.env === 'prod') {
+  //   service.defaults.baseURL = config.baseURL
+  // } else {
+  //   service.defaults.baseURL = config.mock ? config.mockApi : config.baseApi
+  // }
 
   return service(options)
 }
