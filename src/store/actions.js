@@ -3,7 +3,15 @@
  *
  */
 import api from '../api/index'
-import { SET_FULL_SCREEN, SET_MINI_PLAYER, SET_IS_PLAYING, SET_SONGS_DETAIL, SET_IS_SHOW_SONGLIST } from './mutations-type'
+import {
+  SET_FULL_SCREEN,
+  SET_MINI_PLAYER,
+  SET_IS_PLAYING,
+  SET_SONGS_DETAIL,
+  SET_IS_SHOW_SONGLIST,
+  DEL_SONGS,
+  SET_CURRENT_INDEX
+} from './mutations-type'
 
 export default {
   setFullScreen ({ commit }, flag) {
@@ -47,7 +55,6 @@ export default {
     // eslint-disable-next-line prefer-const
     let list = []
     result.songs.forEach(function (value) {
-      console.log(result.songs)
       // eslint-disable-next-line prefer-const
       let music = {
         id: value.id,
@@ -76,5 +83,11 @@ export default {
       list.push(music)
     })
     commit(SET_SONGS_DETAIL, list)
+  },
+  setDelSongs ({ commit }, index) {
+    commit(DEL_SONGS, index)
+  },
+  setCurrentIndex ({ commit }, index) {
+    commit(SET_CURRENT_INDEX, index)
   }
 }

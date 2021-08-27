@@ -25,5 +25,8 @@ export default {
       obj = state.songs[state.currentIndex]
     }
     return obj
+  },
+  currentIndex (state) {
+    return state.currentIndex
   }
 }
