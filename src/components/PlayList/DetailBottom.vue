@@ -33,16 +33,19 @@ export default {
     ...mapActions([
       'setFullScreen',
       'setMiniPlayer',
-      'setSongsDetail'
+      'setSongsDetail',
+      'setIsPlaying'
     ]),
     selectMusic (id) {
       // this.$store.dispatch('setFullScreen', true)
       this.setFullScreen(true)
+      this.setIsPlaying(true)
       this.setMiniPlayer(false)
       this.setSongsDetail(id)
     },
     selectAllMusic () {
       this.setFullScreen(true)
+      this.setIsPlaying(true)
       this.setMiniPlayer(false)
       // eslint-disable-next-line prefer-const
       let ids = this.playlist.map(function (item) {
@@ -85,14 +88,15 @@ export default {
       margin-left: 8px;
       border: 1px solid rgb(94, 94, 94);
       .icon {
-        width: 16px; height: 17px;
-        margin-top: 2px;
+        width: 15px; height: 15px;
+        margin-top: 3px;
         margin-left: 4px;
         fill: currentColor;
         overflow: hidden;
       }
     }
     .bottom-title{
+      flex: 1;
       margin-left: 6px;
     }
   }

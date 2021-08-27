@@ -1,13 +1,13 @@
 <template>
 <div class="player-bottom">
   <div class="bottom-progress">
-    <span>00:00</span>
+    <span ref="eleCurrentTime">00:00</span>
     <div class="progress-bar">
       <div class="progress-line">
         <div class="progress-dot"></div>
       </div>
     </div>
-    <span>00:00</span>
+    <span ref="eleTotalTime">00:00</span>
   </div>
   <div class="bottom-control">
     <div class="heart">
@@ -15,7 +15,7 @@
         <use xlink:href="#icon-iconxd"></use>
       </svg>
     </div>
-    <div class="last-song">
+    <div class="last-song" @click="lastSong">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-shangyishoushangyige"></use>
       </svg>
@@ -31,12 +31,12 @@
         <span></span>
       </div>
     </div>
-    <div class="next-song">
+    <div class="next-song" @click="nextSong">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-xiayigexiayishou"></use>
       </svg>
     </div>
-    <div class="song-list">
+    <div class="song-list" @click="songlist">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-bofangliebiaoguanli"></use>
       </svg>
@@ -46,22 +46,73 @@
 </template>
 
 <script>
+import { Toast } from 'vant'
+import { formartTime } from '@/utils/tools'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'PlayerBottom',
   methods: {
     ...mapActions([
-      'setIsPlaying'
+      'setIsPlaying',
+      'setCurrentIndex',
+      'setIsShowSongList'
     ]),
     playPause () {
       this.setIsPlaying(!this.isPlaying)
       console.log(this.isPlaying)
+    },
+    // 歌曲切换
+    lastSong () {
+      if (this.songs.length === 1) {
+        Toast('没有上一首啦,再添加点吧')
+      } else {
+        this.setCurrentIndex(this.currentIndex - 1)
+        this.setIsPlaying(true)
+      }
+    },
+    nextSong () {
+      if (this.songs.length === 1) {
+        Toast('没有下一首啦,再添加点吧')
+      } else {
+        this.setCurrentIndex(this.currentIndex + 1)
+        this.setIsPlaying(true)
+      }
+    },
+    // 播放列表
+    songlist () {
+      this.setIsShowSongList(true)
     }
   },
   computed: {
     ...mapGetters([
-      'isPlaying'
+      'isPlaying',
+      'currentIndex',
+      'songs'
     ])
+  },
+  props: {
+    totalTime: {
+      type: Number,
+      default: 0,
+      required: true
+    },
+    currentTime: {
+      type: Number,
+      default: 0,
+      required: true
+    }
+  },
+  watch: {
+    totalTime (value) {
+      // eslint-disable-next-line prefer-const
+      let time = formartTime(value)
+      this.$refs.eleTotalTime.innerHTML = time.minute + ':' + time.second
+    },
+    currentTime (value) {
+      // eslint-disable-next-line prefer-const
+      let time = formartTime(value)
+      this.$refs.eleCurrentTime.innerHTML = time.minute + ':' + time.second
+    }
   }
 }
 </script>
@@ -75,6 +126,9 @@ export default {
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
+    span{
+      color: rgb(224, 224, 224);
+    }
     .progress-bar{
       width: 74%;
       height: 3px;
@@ -83,13 +137,13 @@ export default {
       background-color: rgb(189, 189, 189);
       position: relative;
       .progress-line{
-        width: 50%;
+        width: 3%;
         height: 3px;
         border-radius: 4px;
         background-color: rgb(255, 255, 255);
         .progress-dot{
           position: absolute;
-          left: 50%;
+          left: 5px;
           top: 50%;
           transform: translateY(-50%);
           width: 10px;

@@ -64,17 +64,23 @@ export default {
 <style scoped lang="scss">
 .my-swipe{
   .cd{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 360px;
+    padding: 20px 0 0;
     .cd-wrapper{
-      height: 260px;
-      width: 260px;
+      height: 250px;
+      width: 250px;
       background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
       border-radius: 50%;
       overflow: hidden;
-      margin: 30px auto;
       box-shadow: 0 0 1px 16px rgba(10, 10, 10, .1);
       animation: sport 5s linear infinite;
       animation-play-state: paused;
       img{
+        border-radius: 50%;
         height: 100%;
         width: 100%;
       }
@@ -91,7 +97,7 @@ export default {
     align-items: center;
     justify-content: center;
     gap: 4px;
-    margin: 50px 0 10px;
+    margin: 10px 0;
     span{
       display: inline-block;
       border-radius: 6px;
