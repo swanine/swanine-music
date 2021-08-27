@@ -122,8 +122,8 @@ export default {
         animation-play-state: paused;
         animation: sport 5s linear infinite;
         img{
-          width: 100%;
-          height: 100%;
+          width: 50px;
+          height: 50px;
           background-image: url('https://img0.baidu.com/it/u=2068735270,2570475849&fm=26&fmt=auto&gp=0.jpg');
         }
       }

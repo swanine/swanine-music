@@ -14,7 +14,7 @@
       </template>
     </Playerheader>
     <PlayerMiddle/>
-    <PlayBottom/>
+    <PlayBottom :totalTime="totalTime" :currentTime="currentTime"/>
   </div>
   <img :src="currentSong.picUrl">
 </div>
@@ -35,6 +35,18 @@ export default {
     return {
       bgImg: {
       }
+    }
+  },
+  props: {
+    totalTime: {
+      type: Number,
+      default: 0,
+      required: true
+    },
+    currentTime: {
+      type: Number,
+      default: 0,
+      required: true
     }
   },
   components: {
