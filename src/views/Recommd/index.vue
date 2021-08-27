@@ -1,4 +1,5 @@
 <template>
+<Header/>
 <div class="recommend">
   <ScrollView>
     <div>
@@ -10,7 +11,7 @@
     </div>
   </ScrollView>
   <router-view v-slot="{ Component }">
-    <transition name="fade" mode="out-in">
+    <transition name="van-slide-right" mode="out-in">
         <component :is="Component"/>
     </transition>
   </router-view>
@@ -18,6 +19,7 @@
 </template>
 
 <script>
+import Header from '@/components/Header.vue'
 import ScrollView from '@/components/ScrollView.vue'
 import Banner from '@/components/Banner.vue'
 import Navbar from '@/components/Navbar.vue'
@@ -40,6 +42,7 @@ export default {
     }
   },
   components: {
+    Header,
     ScrollView,
     Banner,
     Navbar,
@@ -63,7 +66,7 @@ export default {
 <style scoped lang="scss">
 .recommend{
   position: fixed;
-  top: 47px;
+  top: 46px;
   left: 0;
   right: 0;
   bottom: 60px;
