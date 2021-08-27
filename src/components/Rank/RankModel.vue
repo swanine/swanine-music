@@ -3,7 +3,7 @@
   <div class="rank-top">
     <h2>榜单推荐</h2>
     <div class="rank-list">
-        <div class="rank-item" v-for="value in recomList" :key="value.id">
+        <div class="rank-item" v-for="value in recomList" :key="value.id" @click="recomRank">
           <div class="rank-img">
             <img :src="value.coverImgUrl" alt="">
           </div>
@@ -16,7 +16,7 @@
       <svg t="1630060596104" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11016" width="200" height="200"><path d="M511.764091 131.708086a446.145957 446.145957 0 1 0 446.145957 446.145957 446.145957 446.145957 0 0 0-446.145957-446.145957z m0 519.76004A71.829499 71.829499 0 1 1 583.59359 580.530919 72.275645 72.275645 0 0 1 511.764091 651.468126z" fill="#F55E55" p-id="11017"></path><path d="M802.205109 0.541175l-168.197026 37.030114a67.814185 67.814185 0 0 0-53.091369 66.029602V223.614153l3.569168 349.778431h114.213365V223.614153h108.859613a26.322611 26.322611 0 0 0 26.768758-26.322611V26.863786a26.768757 26.768757 0 0 0-32.122509-26.322611z" fill="#F9BBB8" p-id="11018"></path><path d="M511.764091 386.457428a186.935156 186.935156 0 1 0 186.935156 186.48901A186.935156 186.935156 0 0 0 511.764091 386.457428z m0 264.564552a71.383353 71.383353 0 1 1 71.383353-71.383353 71.383353 71.383353 0 0 1-71.383353 71.383353z" fill="#F9BBB8" p-id="11019"></path></svg>
       <h2>官方榜</h2>
     </div>
-    <div class="official-rank-wrapper" v-for="item in toplist" :key="item.id">
+    <div class="official-rank-wrapper" v-for="item in toplist" :key="item.id" @click="officialRank(item.id)">
       <div class="rank-wrapper-left">
         <h2>{{item.name}}</h2>
         <img :src="item.coverImgUrl" alt="">
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import { Toast } from 'vant'
 export default {
   name: 'RankModel',
   props: {
@@ -53,6 +54,21 @@ export default {
       type: Array,
       default: () => [],
       required: true
+    },
+    type: {
+      type: String,
+      default: ''
+    }
+  },
+  methods: {
+    recomRank () {
+      Toast({
+        message: '暂时还没有数据哦，试试下面的榜单吧',
+        position: 'top'
+      })
+    },
+    officialRank (id) {
+      this.$emit('rankDetail', id, this.type)
     }
   }
 }
@@ -76,6 +92,7 @@ export default {
     .rank-list{
       display: flex;
       justify-content: space-between;
+      min-height: 140px;
       .rank-item{
         margin: 10px 0;
         width: 100px;

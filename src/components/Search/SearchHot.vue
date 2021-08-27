@@ -64,7 +64,6 @@ export default {
 <style scoped lang="scss">
 .search{
   padding: 8px 16px;
-  letter-spacing: 2px;
   background-color: #fff;
   .recommSearch{
     font-size: 14px;

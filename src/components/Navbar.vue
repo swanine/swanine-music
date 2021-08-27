@@ -3,7 +3,7 @@
     <div class="content" > -->
 
 <div class="navBar">
-  <div class="nav-item">
+  <div class="nav-item" @click="toplist">
     <div class="nav-icon">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-note"></use>
@@ -12,7 +12,7 @@
     <div class="nav-Title">每日推荐</div>
   </div>
 
-  <div class="nav-item">
+  <div class="nav-item" @click="toplist">
     <div class="nav-icon">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-radio"></use>
@@ -30,7 +30,7 @@
     <div class="nav-Title">歌单</div>
   </div>
 
-  <div class="nav-item">
+  <div class="nav-item" @click="toplist">
     <div class="nav-icon">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-SanMiAppglyphico"></use>
@@ -48,23 +48,23 @@
     <div class="nav-Title">数字专辑</div>
   </div>
 
-  <div class="nav-item">
+  <!-- <div class="nav-item">
     <div class="nav-icon">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-harp"></use>
       </svg>
     </div>
     <div class="nav-Title">专注冥想</div>
-  </div>
+  </div> -->
 
-  <div class="nav-item">
+  <!-- <div class="nav-item">
     <div class="nav-icon">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-turntable"></use>
       </svg>
     </div>
     <div class="nav-Title">练歌房</div>
-  </div>
+  </div> -->
 
   <!-- <div class="nav-item">
     <div class="nav-icon">
@@ -82,7 +82,12 @@
 
 <script>
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+  methods: {
+    toplist () {
+      this.$emit('toplist')
+    }
+  }
 }
 </script>
 
@@ -94,9 +99,10 @@ export default {
   padding: 10px 16px;
   padding-bottom: 6px;
   display: flex;
+  justify-content: space-between;
   background-color: rgb(250, 250, 250);
   gap: 20px;
-  width: 100vw;
+  // width: 100vw;
   border-bottom: 1px solid #f0f0f0;
   box-sizing: border-box;
   overflow: scroll;

@@ -1,10 +1,11 @@
 <template>
 <Header/>
+<keep-alive>
 <div class="recommend">
   <ScrollView>
     <div>
       <Banner/>
-      <Navbar/>
+      <Navbar @toplist="toplist"/>
       <Personalized :personalized="personalized" :title="'最新歌单'" @select="selectItem" :type="'personalized'"/>
       <Personalized :personalized="albums" :title="'最新专辑'" @select="selectItem" :type="'albums'"/>
       <RecommendSong :songs="songs"/>
@@ -16,6 +17,7 @@
     </transition>
   </router-view>
 </div>
+</keep-alive>
 </template>
 
 <script>
@@ -36,8 +38,14 @@ export default {
   },
   methods: {
     selectItem (id, type) {
+      // eslint-disable-next-line no-unused-expressions
       this.$router.push({
         path: `/recom/detail/${id}/${type}`
+      })
+    },
+    toplist () {
+      this.$router.push({
+        name: 'Rank'
       })
     }
   },

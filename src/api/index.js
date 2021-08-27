@@ -105,5 +105,12 @@ export default {
       method: 'get',
       data: { ids }
     })
+  },
+  // 排行
+  getRankDetail () {
+    return request({
+      url: '/toplist/detail',
+      method: 'get'
+    })
   }
 }
