@@ -51,11 +51,11 @@ export default {
     })
   },
   // 推荐歌单
-  getPersonalized  () {
+  getPersonalized  (limit) {
     return request({
       url: '/personalized',
       method: 'get',
-      data: { limit: 9 }
+      data: { limit }
     })
   },
   // 获取歌单详情
@@ -110,6 +110,13 @@ export default {
   getRankDetail () {
     return request({
       url: '/toplist/detail',
+      method: 'get'
+    })
+  },
+  // 网友精选
+  getTopPlaylist () {
+    return request({
+      url: '/top/playlist?limit=10',
       method: 'get'
     })
   }
