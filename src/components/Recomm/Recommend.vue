@@ -9,6 +9,11 @@
       <p>{{item.name}}</p>
     </div>
   </div>
+    <router-view v-slot="{ Component }">
+    <transition name="van-slide-right" mode="out-in">
+        <component :is="Component"/>
+    </transition>
+  </router-view>
 </div>
 </template>
 
@@ -48,6 +53,8 @@ export default {
   padding: 6px 16px;
   color: #555;
   background-color: rgb(250, 250, 250);
+  position: relative;
+  z-index: 2;
   .personalized-top{
     width: 100%;
     height: 34px;
@@ -63,7 +70,6 @@ export default {
     flex-wrap: wrap;
     justify-content: space-between;
     box-sizing: border-box;
-    overflow-x: auto;
     min-height: 460px;
     .item{
       width: 104px;

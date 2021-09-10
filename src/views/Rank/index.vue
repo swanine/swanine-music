@@ -34,7 +34,7 @@ export default {
   methods: {
     rankDetail (id, type) {
       this.$router.push({
-        path: `/recom/detail/${id}/${type}`
+        path: `/recom/rank/${id}/${type}`
       })
     }
   },
@@ -50,6 +50,10 @@ export default {
 
 <style scoped lang="scss">
 .rank{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   background-color: rgb(245, 245, 245);
   main{
     overflow: hidden;
