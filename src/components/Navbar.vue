@@ -21,7 +21,7 @@
     <div class="nav-Title">私人FM</div>
   </div>
 
-  <div class="nav-item">
+  <div class="nav-item" @click="playlist">
     <div class="nav-icon">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-music_transcript"></use>
@@ -48,14 +48,14 @@
     <div class="nav-Title">数字专辑</div>
   </div>
 
-  <!-- <div class="nav-item">
+  <div class="nav-item">
     <div class="nav-icon">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-harp"></use>
       </svg>
     </div>
     <div class="nav-Title">专注冥想</div>
-  </div> -->
+  </div>
 
   <!-- <div class="nav-item">
     <div class="nav-icon">
@@ -66,14 +66,14 @@
     <div class="nav-Title">练歌房</div>
   </div> -->
 
-  <!-- <div class="nav-item">
+  <div class="nav-item">
     <div class="nav-icon">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-gramophone_record"></use>
       </svg>
     </div>
     <div class="nav-Title">数字专辑</div>
-  </div> -->
+  </div>
 </div>
 
 <!-- </div>
@@ -86,6 +86,9 @@ export default {
   methods: {
     toplist () {
       this.$emit('toplist')
+    },
+    playlist () {
+      this.$emit('playlist')
     }
   }
 }
@@ -98,6 +101,7 @@ export default {
 .navBar{
   padding: 10px 16px;
   padding-bottom: 6px;
+  width: 500px;
   display: flex;
   justify-content: space-between;
   background-color: rgb(250, 250, 250);
@@ -105,8 +109,6 @@ export default {
   // width: 100vw;
   border-bottom: 1px solid #f0f0f0;
   box-sizing: border-box;
-  overflow: scroll;
-  scrollbar-width: none; /* firefox */
   .nav-item{
     display: flex;
     width: 50px;
