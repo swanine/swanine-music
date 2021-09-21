@@ -1,11 +1,18 @@
 <template>
-<Header/>
-<keep-alive>
+<Header @getMenuList="getMenu"/>
+  <van-popup v-model:show="show" position="left" :style="{ height: '100%', width: '66%' }">
+    <MenuHead @toPlayList="toPlayList" @toSearch="toSearch" @toTopList="toTopList"/>
+  </van-popup>
 <div class="recommend">
   <ScrollView>
     <div>
       <Banner/>
-      <Navbar @toplist="toplist"/>
+      <div class="scrollx">
+        <ScrollX>
+          <Navbar @toplist="toplist" @playlist="playlist"/>
+        </ScrollX>
+      </div>
+      <DayRecomm :title="'每日推荐'" :playlists="playlists" :type="'personalized'" @selectSong="selectItem"/>
       <Personalized :personalized="personalized" :title="'最新歌单'" @select="selectItem" :type="'personalized'"/>
       <Personalized :personalized="albums" :title="'最新专辑'" @select="selectItem" :type="'albums'"/>
       <RecommendSong :songs="songs"/>
@@ -17,23 +24,27 @@
     </transition>
   </router-view>
 </div>
-</keep-alive>
 </template>
 
 <script>
 import Header from '@/components/Header.vue'
+import MenuHead from '@/components/Menu/MenuHead'
 import ScrollView from '@/components/ScrollView.vue'
+import ScrollX from '@/components/ScrollX.vue'
 import Banner from '@/components/Banner.vue'
 import Navbar from '@/components/Navbar.vue'
 import Personalized from '@/components/Recomm/Recommend.vue'
 import RecommendSong from '@/components/Recomm/RecommSong.vue'
+import DayRecomm from '../../components/Recomm/everyDayRecomm.vue'
 export default {
   name: 'Recom',
   data () {
     return {
+      show: false,
       personalized: [],
       albums: [],
-      songs: []
+      songs: [],
+      playlists: []
     }
   },
   methods: {
@@ -45,20 +56,49 @@ export default {
     },
     toplist () {
       this.$router.push({
-        name: 'Rank'
+        path: '/recom/rank'
+      })
+    },
+    playlist () {
+      this.$router.push({
+        path: '/recom/playlist'
+      })
+    },
+    getMenu () {
+      this.show = true
+    },
+    toPlayList () {
+      this.show = false
+      this.$router.push({
+        path: '/recom/playlist'
+      })
+    },
+    toSearch () {
+      this.show = false
+      this.$router.push({
+        path: '/search'
+      })
+    },
+    toTopList () {
+      this.show = false
+      this.$router.push({
+        path: '/recom/rank'
       })
     }
   },
   components: {
     Header,
     ScrollView,
+    ScrollX,
     Banner,
     Navbar,
     Personalized,
-    RecommendSong
+    RecommendSong,
+    DayRecomm,
+    MenuHead
   },
   created () {
-    this.$api.getPersonalized().then((res) => {
+    this.$api.getPersonalized(9).then((res) => {
       this.personalized = res.result
     })
     this.$api.getnewest().then((res) => {
@@ -66,6 +106,9 @@ export default {
     })
     this.$api.getNewSong().then((res) => {
       this.songs = res.result
+    })
+    this.$api.getTopPlaylist().then((res) => {
+      this.playlists = res.playlists
     })
   }
 }
@@ -79,6 +122,10 @@ export default {
   right: 0;
   bottom: 60px;
   overflow: hidden;
+  .scrollx{
+    width: 100vw;
+    background-color: #fafafa;
+  }
 }
 .fade-enter-active {
   transition: all 0.3s ease-in-out;

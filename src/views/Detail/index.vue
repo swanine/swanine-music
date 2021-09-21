@@ -29,7 +29,6 @@ export default {
     ScrollView
   },
   created () {
-    console.log(this.$route.params.type)
     if (this.$route.params.type === 'personalized') {
       this.$api.getPlaylistDetail(this.$route.params.id).then((res) => {
         this.playList = res.playlist
