@@ -59,7 +59,6 @@ export default {
     ]),
     playPause () {
       this.setIsPlaying(!this.isPlaying)
-      console.log(this.isPlaying)
     },
     // 歌曲切换
     lastSong () {
