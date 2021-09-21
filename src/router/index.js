@@ -17,6 +17,26 @@ const routes = [
             path: 'detail/:id/:type',
             name: 'Detail',
             component: () => import('@/views/Detail/index.vue')
+          },
+          {
+            path: 'playlist',
+            component: () => import('@/views/PlayList/idnex.vue'),
+            children: [
+              {
+                path: ':id/:type',
+                component: () => import('@/views/Detail/index.vue')
+              }
+            ]
+          },
+          {
+            path: 'rank',
+            component: () => import('@/views/Rank'),
+            children: [
+              {
+                path: ':id/:type',
+                component: () => import('@/views/Detail/index.vue')
+              }
+            ]
           }
         ]
       },
@@ -24,20 +44,13 @@ const routes = [
         path: '/search',
         name: 'Search',
         component: () => import('@/views/Search')
-      },
-      {
-        path: '/rank',
-        name: 'Rank',
-        component: () => import('@/views/Rank'),
-        children: [
-          // {
-          //   path: 'detail/:id/:type',
-          //   name: 'Detail',
-          //   component: () => import('@/views/Detail/index.vue')
-          // }
-        ]
       }
     ]
+  },
+  {
+    path: '/test',
+    name: 'Test',
+    component: () => import('@/views/test.vue')
   }
 ]
 
