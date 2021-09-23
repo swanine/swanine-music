@@ -95,7 +95,5 @@ npm run dev (在浏览器访问本项目，建议开发者工具切换至移动�
 ## 6.项目截图
 
 <img src=".\src\assets\image\1.png" style="zoom: 40%;" /><img src=".\src\assets\image\7.png" style="zoom:40%;" /><img src=".\src\assets\image\3.png" style="zoom:40%;" />
-
-
 <img src=".\src\assets\image\5.png" style="zoom:40%;" /><img src=".\src\assets\image\2.png" style="zoom:40%;" /><img src=".\src\assets\image\4.png" style="zoom:40%;" />
 
