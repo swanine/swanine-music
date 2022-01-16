@@ -6,7 +6,7 @@ const NETWORK_ERROR = '网络异常'
 
 // 创建axios实例对象，添加全局配置
 const service = axios.create({
-  baseURL: 'http://swanine.xyz:3000',
+  baseURL: 'https://swanine.xyz:3001',
   timeout: 10000
 })
 

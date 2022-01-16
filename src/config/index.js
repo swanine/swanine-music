@@ -5,7 +5,7 @@
 const env = process.env || 'prod'
 const EnvConfig = {
   dev: {
-    baseApi: 'http://swanine.xyz:3000',
+    baseApi: 'https://swanine.xyz:3001',
     mockApi: ''
   },
   test: {
@@ -13,7 +13,7 @@ const EnvConfig = {
     mockApi: ''
   },
   prod: {
-    baseApi: '/http://swanine.xyz:3000',
+    baseApi: '/https://swanine.xyz:3001',
     mockApi: ''
   }
 }
